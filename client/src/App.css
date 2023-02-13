@@ -1,0 +1,19 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.responsive-container {
+  /*background-image: url("https://wallpaperaccess.com/full/1155256.jpg");*/
+  background-color: #232427;
+  background-size: cover;
+  min-height: 100vh;
+}
+.app-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

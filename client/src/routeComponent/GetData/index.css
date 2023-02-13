@@ -1,0 +1,32 @@
+.project-key-details {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+.project-value-details {
+  color: rgb(247, 223, 230);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.list-container {
+  display: flex;
+  flex-direction: flex;
+  justify-content:flex-end;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 250px;
+}
+.list-values {
+  margin-left: 10px;
+  color: #fff;
+  display: flex;
+}
+.key-value-card {
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid ;
+}

@@ -1,0 +1,129 @@
+.sidebar-project-details-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+.project-details-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.project-details-back-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-container {
+  display: inline;
+  align-items: center;
+}
+.back-option {
+  display: inline;
+  margin-left: 50px;
+  color: #fff;
+  border: 2px solid;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+.project-heading-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.project-heading {
+  text-align: center;
+  color: rgb(162, 10, 17);
+  font-size:50px;
+}
+.heading-text {
+  font-size: 25px;
+  color: rgb(202, 224, 31);
+}
+
+.text {
+  font-size: 20px;
+  color: skyblue;
+}
+.emp-card {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emp-card-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(199, 191, 191);
+  margin: 10px;
+  padding: 0px;
+  list-style-type: none;
+  max-height: 90%;
+  height: 160px;
+  width: 330px;
+  border-radius: 8px;
+  border-top: 5px solid #44c4a1;
+  box-shadow: 0px 3px 2px 0px;
+}
+.emp-image {
+  width: 80px;
+  border-radius: 120px;
+  margin: 5px;
+}
+.emp-card-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.emp-name-card {
+  display: flex;
+  flex-direction: column;
+}
+.emp-name {
+  font-size: 22px;
+  color: rgb(54, 214, 239);
+  margin-left: 10px;
+}
+.emp-role-card {
+  display: flex;
+
+  justify-content: flex-start;
+}
+.emp-role {
+  font-size: 16px;
+  color: brown;
+}
+.team-heading {
+  display: flex;
+  align-self: flex-start;
+  color: #fff;
+  font-size: 25px;
+}
+.emp-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  background-color: rgb(170, 152, 205, 0.4);
+  border-radius: 0%;
+  width: 60%;
+  min-height: 100%;
+}
+
+.keys-values-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}

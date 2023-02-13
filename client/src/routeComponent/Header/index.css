@@ -1,0 +1,70 @@
+.nav_container {
+  display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+.website-logo {
+    width: 110px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .website-logo {
+      width: 165px;
+    }
+  }
+  
+  .nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .nav-link {
+    font-family: 'Roboto';
+    text-decoration: none;
+    margin: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+  }
+  .nav-link:hover {
+    color: chocolate;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    list-style-type: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .nav-menu li {
+    margin: 10px;
+  }
+  .logout-btn {
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    color: white;
+    background-color: #0967d2;
+    border: none;
+    border-radius: 8px;
+    margin-left: 14px;
+  }
+  
+  .profile-log-out-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:200px;
+  }
+  .logout-btn:hover {
+    background-color: blueviolet;
+    color: black;
+  }

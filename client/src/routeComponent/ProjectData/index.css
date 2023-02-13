@@ -1,0 +1,7 @@
+.project-cards-lists {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #232427;
+    margin-top:20px;
+  }

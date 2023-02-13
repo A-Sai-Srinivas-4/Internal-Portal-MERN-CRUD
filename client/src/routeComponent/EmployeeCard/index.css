@@ -1,0 +1,81 @@
+.dev-card-item {
+  background-color: rgb(217, 201, 201);
+  height: 33vh;
+  width: 20vw;
+  list-style-type: none;
+  border-radius: 10px;
+  border-top: 5px solid #44c4a1;
+  box-shadow: 0px 3px 2px 0px;
+  padding:5px;
+}
+
+.card_image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.name_heading {
+  margin-top: 20px;
+  color: black;
+  font-weight: 700;
+}
+
+.dev-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 120px;
+  margin-top: 20px;
+  border: 2px solid black;
+  margin-right: 10px;
+}
+.card_bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 10px;
+}
+.headings {
+  color: white;
+  font-weight: 700;
+  margin-top: 30px;
+}
+.role_heading {
+  color: black;
+  font-weight: 700;
+}
+.project_heading {
+  color: black;
+  font-weight: 700;
+}
+
+.span {
+  color: white;
+  font-weight: 500;
+  margin-left: 0px;
+}
+.card_project {
+  display: flex;
+  flex-direction: row;
+}
+.span_project {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 6vh;
+  overflow: hidden;
+}
+.anchor {
+  color: blue;
+  margin-left: 150px;
+  margin-top: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+.anchor:hover {
+  color: rgb(70, 75, 71);
+}

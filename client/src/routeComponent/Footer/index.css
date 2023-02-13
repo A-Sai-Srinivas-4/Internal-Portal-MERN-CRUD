@@ -1,0 +1,19 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgb(160, 153, 153);
+    background-size: cover;
+    width: 100%;
+    line-height: 0;
+  }
+  .footer-icon {
+    margin: 10px;
+    color: black;
+  }
+  .contact-heading {
+    color: black;
+    font-size: 18px;
+  }

@@ -1,0 +1,21 @@
+.sidebar-developers-container {
+  display: flex;
+  min-height: 100vh;
+  margin: 20px;
+}
+.add-emp-form {
+  margin-left: 30px;
+}
+.project-heading-add-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reload-container{
+  background-color: transparent;
+  border: none;
+}
+.reload{
+  color:orange;
+  margin-left: 20px;
+}
