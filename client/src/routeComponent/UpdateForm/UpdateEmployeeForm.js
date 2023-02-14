@@ -8,7 +8,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 //import { Button, Alert, CircularProgress } from "@mui/material";
 import axios from "axios";
-import "./index.css";
+
 
 const UpdateEmployeeForm = () => {
   const Data = useSelector((state) => state.Data);

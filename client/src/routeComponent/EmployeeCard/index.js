@@ -14,18 +14,13 @@ const EmployeeCard = (props) => {
   const colorPalette = () => {
     const colors = [
       "#2596be", // shade of cyan
-
       "#9370DB", // MediumPurple
       "#663399", // RebeccaPurple
       "#4B0082", // Indigo
-
       "#7B68EE", // MediumSlateBlue
-
       "#483D8B", // DarkSlateBlue
-
       "#0f470f",
       "#008080", // Teal
-
       "#228B22", // ForestGreen
       "#6B8E23", // OliveDrab
       "#FFFF00", // Yellow

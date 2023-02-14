@@ -10,15 +10,6 @@ const initialState = {
 };
 
 const baseURL = "http://localhost:8000/api/";
-// const Project_Details = "http://localhost:8000/api/projectdetails";
-//const Employee_Details = "http://localhost:8000/api/employeedetails";
-
-// export const fetchData = createAsyncThunk("redux/fetchData", async () => {
-//   // Fetch your data here and return it
-//   const response = await fetch(Resources);
-//   const data = await response.json();
-//   return data;
-// });
 
 export const fetchData = createAsyncThunk(
   "todos/fetchData",
@@ -33,11 +24,25 @@ export const fetchData = createAsyncThunk(
   }
 );
 
+// export const getProjectCardByID = createAsyncThunk(
+//   "redux/getProjectCardByID",
+//   async (id , { rejectWithValue }) => {
+//     try {
+//       const response = await axios.get(baseURL + "projectdetails/" + id);
+//       return response.data;
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue(error.response?.data);
+//     }
+//   }
+// );
+
+
 export const addEmployeeCard = createAsyncThunk(
   "redux/addEmployeeCard",
   async (item, { rejectWithValue }) => {
     try {
-      const response = await axios.post(baseURL+ "employeedetails", item);
+      const response = await axios.post(baseURL + "employeedetails", item);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -50,7 +55,7 @@ export const addProjectCard = createAsyncThunk(
   "redux/addProjectCard",
   async (item, { rejectWithValue }) => {
     try {
-      const response = await axios.post(baseURL+ "projectdetails", item);
+      const response = await axios.post(baseURL + "projectdetails", item);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -63,10 +68,14 @@ export const updateProjectCard = createAsyncThunk(
   "redux/updateProjectCard",
   async (item, { rejectWithValue }) => {
     try {
-      const { _id, ID, Name, Scrum_Master, Current_Sprint, Details  } = item;
+      const { _id, ID, Name, Scrum_Master, Current_Sprint, Details } = item;
 
       const response = await axios.put(baseURL + "projectdetails/" + _id, {
-        ID, Name, Scrum_Master, Current_Sprint, Details 
+        ID,
+        Name,
+        Scrum_Master,
+        Current_Sprint,
+        Details,
       });
       return response.data;
     } catch (error) {
@@ -80,11 +89,42 @@ export const updateEmployeeCard = createAsyncThunk(
   "redux/updateEmployeeCard",
   async (item, { rejectWithValue }) => {
     try {
-      const { _id,  ID, Name, Image_url, Role, Team, Details  } = item;
+      const { _id, ID, Name, Image_url, Role, Team, Details } = item;
 
       const response = await axios.put(baseURL + "employeedetails/" + _id, {
-        ID, Name, Image_url, Role, Team, Details 
+        ID,
+        Name,
+        Image_url,
+        Role,
+        Team,
+        Details,
       });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response?.data);
+    }
+  }
+);
+
+export const deleteProjectCard = createAsyncThunk(
+  "redux/deleteProjectCard",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(baseURL + "projectdetails/" + id);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response?.data);
+    }
+  }
+);
+
+export const deleteEmployeeCard = createAsyncThunk(
+  "redux/deleteEmployeeCard",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(baseURL + "employeedetails/" + id);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -96,39 +136,7 @@ export const updateEmployeeCard = createAsyncThunk(
 const dataSlice = createSlice({
   name: "data",
   initialState,
-  reducers: {
-    // addProjectDetails: (state, action) => {
-    //   state.Resources.Project_Details.push(action.payload);
-    // },
-    // addEmployeeDetails: (state, action) => {
-    //   console.log(action);
-    //   //console.log(state)
-    //   state.Resources.Employee_Details.push(action.payload);
-    // },
-    // updateProjectDetails: (state, action) => {
-    //   const projectIndex = state.Resources.Project_Details.findIndex(
-    //     (project) => project.id === action.payload.id
-    //   );
-    //   state.Resources.Project_Details[projectIndex] = action.payload;
-    // },
-    // updateEmployeeDetails: (state, action) => {
-    //   const employeeIndex = state.Resources.Employee_Details.findIndex(
-    //     (employee) => employee.id === action.payload.id
-    //   );
-    //   state.Resources.Employee_Details[employeeIndex] = action.payload;
-    // },
-    // deleteProjectDetails: (state, action) => {
-    //   state.Resources.Project_Details = state.Resources.Project_Details.filter(
-    //     (project) => project.id !== action.payload.id
-    //   );
-    // },
-    // deleteEmployeeDetails: (state, action) => {
-    //   state.Resources.Employee_Details =
-    //     state.Resources.Employee_Details.filter(
-    //       (employee) => employee.id !== action.payload.id
-    //     );
-    // },
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
     builder.addCase(fetchData.pending, (state) => {
@@ -144,6 +152,22 @@ const dataSlice = createSlice({
       state.Resources = [];
       state.error = action.error.message;
     });
+    // builder.addCase(getProjectCardByID.pending, (state) => {
+    //   state.loading = true;
+    // });
+    // builder.addCase(getProjectCardByID.fulfilled, (state, action) => {
+    //   const getProject = state.Resources.Project_Details.map((item) =>
+    //   item._id === action.payload._id ? action.payload : item
+    // );
+    //   state.loading = false;
+    //   state.Resources = getProject;
+    //   state.error = "";
+    // });
+    // builder.addCase(getProjectCardByID.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.Resources = [];
+    //   state.error = action.error.message;
+    // });
     builder.addCase(updateProjectCard.pending, (state) => {
       state.loading = true;
     });
@@ -160,12 +184,40 @@ const dataSlice = createSlice({
       state.Resources = [];
       state.error = action.error.message;
     });
+    builder.addCase(deleteProjectCard.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(deleteProjectCard.fulfilled, (state, action) => {
+      const currentProjectCards = state.Resources.Project_Details.filter(
+        (item) => item._id !== action.payload._id
+      );
+      state.loading = false;
+      state.Resources = currentProjectCards;
+      state.error = "";
+    });
+    builder.addCase(deleteProjectCard.rejected, (state, action) => {
+      state.loading = false;
+      state.Resources = [];
+      state.error = action.error.message;
+    });
+    builder.addCase(deleteEmployeeCard.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(deleteEmployeeCard.fulfilled, (state, action) => {
+      const currentEmployeeCards = state.Resources.Project_Details.filter(
+        (item) => item._id !== action.payload._id
+      );
+      state.loading = false;
+      state.Resources = currentEmployeeCards;
+      state.error = "";
+    });
+    builder.addCase(deleteEmployeeCard.rejected, (state, action) => {
+      state.loading = false;
+      state.Resources = [];
+      state.error = action.error.message;
+    });
   },
-  // extraReducers: {
-  //   [fetchData.fulfilled]: (state, action) => {
-  //     state.Resources = action.payload.Resources;
-  //   },
-  // },
+  
 });
 
 export const {

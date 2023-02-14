@@ -7,7 +7,7 @@
   margin-top: 30px;
   padding-bottom: 30px;
   background-color: beige;
-  width:70vw;
+  width:100vw;
   border-radius: 30px;
   margin-bottom: 30px;
 }
@@ -62,8 +62,8 @@ input:hover{
 }
 .multi-select {
   border: 1;
-  width: 50%;
-  max-width: 250px;
+  width: 45%;
+  max-width: 400px;
 }
 .multi-select-options {
   font-size: 16px;

@@ -7,14 +7,13 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "./index.css";
 
 const UpdateProjectForm = () => {
   const Data = useSelector((state) => state.Data);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
   const { projectId } = useParams();
-  console.log(projectId);
+  //console.log(projectId);
 
   const history = useHistory();
   useEffect(() => {
@@ -114,30 +113,10 @@ const UpdateProjectForm = () => {
 
     dispatch(updateProjectCard(formData));
 
-    // setFormData({
-    //   ID: "",
-    //   Name: "",
-    //   Scrum_Master: "",
-    //   Current_Sprint: "",
-    //   Details: {
-    //     Advance: {
-    //       Start_Date: "",
-    //       End_Date: "",
-    //       "Sprint_Start Date": "",
-    //       "Sprint_Release Date": "",
-    //       Client: "",
-    //       Product_Owner: "",
-    //       QA_Team: [],
-    //       Development_Team: [],
-    //       Technology: [],
-    //     },
-    //   },
-    // });
-
     history.goBack();
   };
 
-  function MultiSelectDropdown(formData,data, team) {
+  function MultiSelectDropdown(formData, data, team) {
     //console.log(data);
     //console.log(team)
     if (data !== undefined) {
@@ -184,7 +163,13 @@ const UpdateProjectForm = () => {
                 "Technology")
           )
         }
-        value={(team === "QA_Team" && formData.Details.Advance.QA_Team) || (team === "Development_Team" && formData.Details.Advance.Development_Team) ||  (Object.keys(team).filter((x) => x === "TechStacks") && formData.Details.Advance.Technology )}
+        value={
+          (team === "QA_Team" && formData.Details.Advance.QA_Team) ||
+          (team === "Development_Team" &&
+            formData.Details.Advance.Development_Team) ||
+          (Object.keys(team).filter((x) => x === "TechStacks") &&
+            formData.Details.Advance.Technology)
+        }
         className="multi-select"
         placeholder="Select"
         isSearchable
@@ -311,15 +296,15 @@ const UpdateProjectForm = () => {
 
               <div className="label-card">
                 <label htmlFor="QA_Team">QA Team : </label>
-                {MultiSelectDropdown(formData,data, team.QA_Team)}
+                {MultiSelectDropdown(formData, data, team.QA_Team)}
               </div>
               <div className="label-card">
                 <label htmlFor="Development_Team">Development Team : </label>
-                {MultiSelectDropdown(formData,data, team.Development_Team)}
+                {MultiSelectDropdown(formData, data, team.Development_Team)}
               </div>
               <div className="label-card">
                 <label htmlFor="Technology">Technology : </label>
-                {MultiSelectDropdown(formData,data, team)}
+                {MultiSelectDropdown(formData, data, team)}
               </div>
             </div>
             <div className="submit-container">

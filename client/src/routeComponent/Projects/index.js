@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import "./index.css";
 
 const Projects = () => {
+  
   return (
     <>
       <Header />
-
       <div className="sidebar-projects-container">
         {GetSidebar()}
         <div className="projects-container">
@@ -17,10 +17,9 @@ const Projects = () => {
             <div className="project-heading-container">
               <h1 className="project-heading">Projects</h1>
               <Link to="/add_project" className="add-form">
-              <BsFillPlusCircleFill color="white" size={35} />
-            </Link>
+                <BsFillPlusCircleFill color="white" size={35} />
+              </Link>
             </div>
-            
           </div>
           <ProjectData />
         </div>
