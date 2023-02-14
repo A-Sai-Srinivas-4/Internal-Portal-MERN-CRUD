@@ -1,36 +1,17 @@
 import React, { useEffect } from "react";
-//import Data from "../Json/data.json";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useSelector, useDispatch } from "react-redux";
-//import { getCards } from "../../redux/dataSlice";
-import { fetchData, addEmployeeDetails } from "../../redux/dataSlice";
-//import axios from "axios";
+import { fetchData } from "../../redux/dataSlice";
 
 const SplitBasic = () => {
   const Data = useSelector((state) => state.Data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //fetchData();
     dispatch(fetchData());
   }, [dispatch]);
-
-  //console.log(Data);
-
-  //const [Data1, setData] = useState([]);
-
-  // const fetchData = () => {
-  //   axios.get(`http://localhost:8000/api/resources`).then((res) => {
-  //     const reso = res.data;
-  //     //console.log(reso.length);
-  //     setData(reso);
-  //   });
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   var Project_details;
   if (Data !== undefined) {

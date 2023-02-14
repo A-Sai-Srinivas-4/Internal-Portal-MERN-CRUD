@@ -7,10 +7,6 @@ import "./index.css";
 const EmployeeCard = (props) => {
   const [addModalShow, setModalShow] = useState(false);
 
-  // const randomcolors = () => {
-  //   return "#" + Math.floor(Math.random() * 26743815).toString(16);
-  // };
-
   const colorPalette = () => {
     const colors = [
       "#2596be", // shade of cyan
@@ -49,8 +45,6 @@ const EmployeeCard = (props) => {
   const { ID, Name, Image_url, Role, Details } = cardDetails;
   const { Advance } = Details;
   const { Projects } = Advance;
-  // const { id, Name, Role, image_url, Projects } = cardDetails;
-  // console.log(Name)
 
   return (
     <>
@@ -93,7 +87,7 @@ const EmployeeCard = (props) => {
               </div>
 
               {Projects.length > 2 ? (
-                <h3 className="anchor">Show-More >>></h3>
+                <h3 className="anchor">Show-More.... </h3>
               ) : (
                 " "
               )}

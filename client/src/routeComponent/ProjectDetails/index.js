@@ -6,6 +6,7 @@ import GetData from "../GetData";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteProjectCard, fetchData } from "../../redux/dataSlice";
+
 import {
   Dialog,
   DialogTitle,
@@ -13,7 +14,8 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core";
-import { Button } from "@material-ui/core"; // import Button component from Material UI
+
+import { Button } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import "./index.css";
 
@@ -24,13 +26,17 @@ const ProjectDetails = ({ match }) => {
   const { projectname } = useParams();
   const history = useHistory();
 
+  
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
 
+  
   const fetchEmpData = () => {
     const tempObj = {};
 
+    
+    
     Object.entries(Data.Resources.Project_Details).map((e) => {
       if (e[1].Name === projectname) {
         for (let [key, value] of Object.entries(e[1])) {
@@ -48,25 +54,28 @@ const ProjectDetails = ({ match }) => {
     return tempObj;
   };
 
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  
+  
   const handleClose = () => {
     setOpen(false);
   };
 
+  
   var Details;
 
   if (Data.Resources !== undefined) {
     Details = fetchEmpData();
-    //console.log(Details)
   }
 
+  
   const handleDelete = (event, projectId) => {
     event.preventDefault();
     handleClickOpen();
-
     try {
       dispatch(deleteProjectCard(projectId));
       history.push("/projects");
@@ -77,7 +86,7 @@ const ProjectDetails = ({ match }) => {
   };
 
   const projectId = Details._id;
-  //console.log(projectId);
+  
 
   return (
     <>
@@ -150,108 +159,3 @@ const ProjectDetails = ({ match }) => {
 };
 
 export default ProjectDetails;
-
-// import React, { useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import GetSidebar from "../Sidebar/Sidebar";
-// import Header from "../Header";
-// import GetData from "../GetData";
-// import { useHistory } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
-// import { deleteProjectCard, fetchData } from "../../redux/dataSlice";
-// import { Button } from "@material-ui/core"; // import Button component from Material UI
-// import Box from "@material-ui/core/Box";
-// import "./index.css";
-
-// const ProjectDetails = ({ match }) => {
-//   const Data = useSelector((state) => state.Data);
-//   const dispatch = useDispatch();
-//   const { projectname } = useParams();
-//   const history = useHistory();
-
-//   useEffect(() => {
-//     dispatch(fetchData());
-//   }, [dispatch]);
-
-//   const fetchEmpData = () => {
-//     const tempObj = {};
-
-//     Object.entries(Data.Resources.Project_Details).map((e) => {
-//       if (e[1].Name === projectname) {
-//         for (let [key, value] of Object.entries(e[1])) {
-//           if (key !== "Details") {
-//             tempObj[key] = value;
-//           } else {
-//             for (let [key, value] of Object.entries(e[1].Details.Advance)) {
-//               tempObj[key] = value;
-//             }
-//           }
-//         }
-//       }
-//     });
-
-//     return tempObj;
-//   };
-
-//   var Details;
-
-//   if (Data.Resources !== undefined) {
-//     Details = fetchEmpData();
-//     //console.log(Details)
-//   }
-
-//   const handleDelete = (event,projectId) => {
-//     event.preventDefault();
-//     try {
-//       dispatch(deleteProjectCard(projectId));
-//       history.push("/projects");
-//     } catch (error) {
-//       console.error("Error deleting project", error);
-//     }
-//   };
-
-//   const projectId = Details._id;
-//   //console.log(projectId);
-
-//   return (
-//     <>
-//       <Header />
-//       <div className="sidebar-project-details-container">
-//         {GetSidebar()}
-//         <div className="project-details-card ">
-//           <div className="emp-details-container">
-//             <div className="project-heading-container">
-//               <h1 className="project-heading">{projectname}</h1>
-//             </div>
-//             <div className="emp-card">
-//               <div className="keys-values-container">
-//                 {Data.Resources && <GetData Details={Details} />}
-//               </div>
-//               <Box display="flex" justifyContent="center" alignItems="center">
-//                 <Button
-//                   variant="contained"
-//                   color="primary"
-//                   style={{ color: "white", marginRight: "60px" }}
-//                   href={"/update_project/" + projectId}
-//                 >
-//                   Update
-//                 </Button>
-//                 <Button
-//                   variant="contained"
-//                   color="primary"
-//                   style={{ color: "white" }}
-//                   href={"/update_project/" + projectId}
-//                   onClick={(event) => handleDelete(event,projectId)}
-//                 >
-//                   Delete
-//                 </Button>
-//               </Box>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default ProjectDetails;

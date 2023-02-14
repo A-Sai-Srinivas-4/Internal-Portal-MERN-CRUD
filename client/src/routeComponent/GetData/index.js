@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 
 const GetData = ({ Details }) => {
-  //console.log(Object.values(Details));
+  
 
   const getListItems = (list) => {
     const value = list.map((e) => e.value);

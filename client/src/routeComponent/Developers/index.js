@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import DeveloperData from "../DeveloperData";
 import Header from "../Header";
 import { BsFillPlusCircleFill } from "react-icons/bs";
-import { TfiReload } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchData } from "../../redux/dataSlice";
-import axios from "axios";
 import "./index.css";
 
 const Developers = () => {
@@ -16,7 +14,7 @@ const Developers = () => {
     dispatch(fetchData());
   }, [dispatch]);
 
-  //console.log(reload);
+  
 
   return (
     <>

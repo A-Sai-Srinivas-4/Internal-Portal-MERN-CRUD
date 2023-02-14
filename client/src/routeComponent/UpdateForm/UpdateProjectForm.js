@@ -9,13 +9,14 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const UpdateProjectForm = () => {
+
   const Data = useSelector((state) => state.Data);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
   const { projectId } = useParams();
-  //console.log(projectId);
-
   const history = useHistory();
+
+  
   useEffect(() => {
     dispatch(fetchData());
     axios
@@ -32,7 +33,6 @@ const UpdateProjectForm = () => {
 
   if (Data.Resources !== undefined) {
     data = Data.Resources.Employee_Details;
-    //console.log(data);
   }
 
   console.log(formData);
@@ -91,7 +91,6 @@ const UpdateProjectForm = () => {
         },
       },
     });
-    //console.log(event.target.value)
   };
 
   function handleSelectChange(selectedOption, selectedName) {
@@ -117,8 +116,6 @@ const UpdateProjectForm = () => {
   };
 
   function MultiSelectDropdown(formData, data, team) {
-    //console.log(data);
-    //console.log(team)
     if (data !== undefined) {
       options = [];
       data.forEach((each) => {
@@ -145,7 +142,7 @@ const UpdateProjectForm = () => {
       });
     }
 
-    //console.log(options);
+    
 
     const uniq_options = uniqByKeepLast(options, (o) => o.value);
 
@@ -320,43 +317,3 @@ const UpdateProjectForm = () => {
 };
 
 export default UpdateProjectForm;
-
-// {
-//   ID: "",
-//   Name: "",
-//   Scrum_Master: "",
-//   Current_Sprint: "",
-//   Details: {
-//     Advance: {
-//       Start_Date: "",
-//       "Date Of Join": "",
-//       End_Date: "",
-//       "Sprint_Start Date": "",
-//       "Sprint_Release Date": "",
-//       Client: "",
-//       Product_Owner: "",
-//       QA_Team: [],
-//       Development_Team: [],
-//       Technology: [],
-//     },
-//   },
-// }
-
-// <Button
-// type="submit"
-// variant="contained"
-// size="small"
-// sx={{
-//   margin: "0.9rem 0rem",
-//   fontFamily: "'Abel', 'sansSerif'",
-// }}
-// >
-// {Data.loading === true ||
-// Data.loading === true ? (
-//   <CircularProgress size={24} color="secondary" />
-// ) : formData._id ? (
-//   "Update Task"
-// ) : (
-//   "Add Task"
-// )}
-// </Button>

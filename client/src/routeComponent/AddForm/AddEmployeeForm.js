@@ -2,16 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-//import { getCards, addEmployeeCard, addData, addEmployeeDetails, fetchData } from "../../redux/dataSlice";
-import {
-  fetchData,
-  addEmployeeCard,
-} from "../../redux/dataSlice";
+import { fetchData, addEmployeeCard } from "../../redux/dataSlice";
 import { AiOutlineClose } from "react-icons/ai";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-//import { Button, Alert, CircularProgress } from "@mui/material";
-import axios from "axios";
 import "./index.css";
 
 const AddEmployeeForm = () => {
@@ -37,10 +31,8 @@ const AddEmployeeForm = () => {
   });
   const history = useHistory();
 
-  //console.log(Data)
 
   useEffect(() => {
-    // dispatch(getCards());
     dispatch(fetchData());
   }, [dispatch]);
 
@@ -53,7 +45,7 @@ const AddEmployeeForm = () => {
 
     //console.log(data)
   }
-  //console.log(project_data)
+
 
   var options = {
     Gender: [
@@ -105,8 +97,7 @@ const AddEmployeeForm = () => {
     const projectName = project_data.map((x) => x.Name);
     projectName.forEach((x) => options.Projects.push({ name: x, value: x }));
   }
-  //console.log(options);
-
+  
   function customTheme(theme) {
     return {
       ...theme,
@@ -128,32 +119,6 @@ const AddEmployeeForm = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  // const handleDetailsChange = (event) => {
-  //   setFormData({
-  //     ...formData,
-  //     Details: {
-  //       Advance: {
-  //         ...formData.Details.Advance,
-  //         [event.target.name]: event.target.value,
-  //       },
-  //     },
-  //   });
-  // };
-
-  // function handleSelectChange(selectedOption, selectedName) {
-  //   setFormData({
-  //     ...formData,
-  //     [selectedName]: selectedOption,
-  //     Details: {
-  //       ...formData.Details,
-  //       Advance: {
-  //         ...formData.Details.Advance,
-  //         [selectedName]: selectedOption,
-  //       },
-  //     },
-  //   });
-  // }
 
   function handleSelectChange(selectedOption, selectedName) {
     setFormData((prevFormData) => {
@@ -215,20 +180,6 @@ const AddEmployeeForm = () => {
     //console.log(formData);
 
     dispatch(addEmployeeCard(formData));
-
-    // axios
-    //   .post("http://localhost:8000/api/employeedetails", formData)
-
-    //   .then((res) => {
-    //     //console.log(res)
-    //     if (res.data.acknowledged) {
-    //       dispatch(addEmployeeDetails(formData));
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
-
-    //dispatch(addEmployeeCard(formData));
-    //dispatch(addEmployeeDetails(formData))
 
     setFormData({
       ID: "",
@@ -387,63 +338,3 @@ const AddEmployeeForm = () => {
 };
 
 export default AddEmployeeForm;
-
-// <Button
-//             type="submit"
-//             variant="contained"
-//             size="small"
-//             sx={{
-//               margin: "0.9rem 0rem",
-//               fontFamily: "'Abel', 'sansSerif'",
-//             }}
-//           >
-//             {Data.addEmployeeCardStatus === "pending" ||
-//             Data.updateTodoStatus === "pending" ? (
-//               <CircularProgress size={24} color="secondary" />
-//             ) : formData._id ? (
-//               "Update Task"
-//             ) : (
-//               "Add Task"
-//             )}
-//           </Button>
-
-//           {Data.addTodoStatus === "rejected" ? (
-//             <Alert severity="error">{Data.addTodoError}</Alert>
-//           ) : null}
-//           {Data.addTodoStatus === "success" ? (
-//             <Alert severity="success">Task Added...</Alert>
-//           ) : null}
-//           {Data.updateTodoStatus === "rejected" ? (
-//             <Alert severity="error">{Data.updateTodoError}</Alert>
-//           ) : null}
-//           {Data.updateTodoStatus === "success" ? (
-//             <Alert severity="success">Task Updated...</Alert>
-//           ) : null}
-//           {Data.deleteTodoStatus === "rejected" ? (
-//             <Alert severity="error">{Data.deleteTodoError}</Alert>
-//           ) : null}
-//           {Data.deleteTodoStatus === "success" ? (
-//             <Alert severity="warning">A todo was deleted...</Alert>
-//           ) : null}
-
-// ID: "",
-// Name: "",
-// Role: "",
-// Image_url: "",
-// Team: "",
-// Details: {
-//   Advance: {
-//     Experience: "",
-//     TechStack: "",
-//     Employment: "",
-//     Offshore: "",
-//     Projects: [
-//       { Project_id: "", Project: "" },
-//       { Project_id: "", Project: "" },
-//     ],
-//   },
-
-// <div className="label-card">
-//   <label htmlFor="Gender">Gender : </label>
-//   {MultiSelectDropdown(data, options.Gender)}
-// </div>

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import Data from "../Json/data.json";
 import EmployeeCard from "../EmployeeCard";
 import { useSelector, useDispatch } from "react-redux";
-//import {getCards } from "../../redux/dataSlice";
 import { fetchData } from "../../redux/dataSlice";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-//import axios from "axios";
 import "./index.css";
 
 const DeveloperData = () => {
@@ -18,42 +15,19 @@ const DeveloperData = () => {
   const [devEmpList, setDevEmpList] = useState([]);
   const [isDataLoaded, setDataLoaded] = useState(false);
 
-  //console.log(Data);
 
-  // async function fetchData() {
-  //   await axios.get(`http://localhost:8000/api/resources`).then((res) => {
-  //     const reso = res.data;
-  //     //console.log(reso);
-  //     setData(reso);
-  //   });
-  // }
-
-  //console.log(Data.Resources)
-  //console.log(Data1);
-  //console.log(Data.Resources.Employee_Details.length)
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
 
   useEffect(() => {
     if (Data.Resources.Employee_Details.length > 0) {
-      //setDevEmpList(prevList => [...prevList, ...Data.Resources.Employee_Details]);
       setDevEmpList(Data.Resources.Employee_Details);
       setDataLoaded(true);
     }
   }, [Data]);
 
-  //console.log(Data);
-
-  // useEffect(() => {
-  //   fetchData();
-  //   //console.log(devEmpList);
-  //   if (Data1.Resources !== undefined) {
-  //     //console.log(Data1.Resources.Employee_Details);
-  //     setDevEmpList(Data1.Resources.Employee_Details);
-  //   }
-
-  // }, []);
+ 
 
   const renderSearchSection = () => (
     <div className="search-container">
@@ -67,7 +41,7 @@ const DeveloperData = () => {
     </div>
   );
 
-  // console.log("data", devEmpList);
+  
 
   const renderDevList = () => (
     <ul className="dev-cards-list">
@@ -140,7 +114,7 @@ const DeveloperData = () => {
         ),
       ];
 
-      //console.log(onsiteDetails);
+      
 
       return (
         <div className="off-shore-button-container">
@@ -166,8 +140,7 @@ const DeveloperData = () => {
         ),
       ];
 
-      //console.log(offshoreDetails);
-
+      
       return (
         <div className="off-shore-button-container">
           <button
@@ -188,7 +161,7 @@ const DeveloperData = () => {
         ...new Set(Data.Resources.Employee_Details.map((e) => e.Role.value)),
       ];
 
-      //console.log(roleDetails)
+      
 
       return (
         <Dropdown>
@@ -216,14 +189,7 @@ const DeveloperData = () => {
     }
   };
 
-  // function renderData() {
-  //   setTimeout(() => {
-  //     setDevEmpList(Data.Resources.Employee_Details);
-  //     setDataLoaded(isDataLoaded);
-  //   }, 1);
-  // }
 
-  //console.log(Data.Resources);
 
   return (
     <>

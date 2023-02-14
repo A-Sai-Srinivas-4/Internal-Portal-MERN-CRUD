@@ -6,7 +6,6 @@ import Switch from "@mui/material/Switch";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
-//import AccountCircle from "@mui/icons-material/AccountCircle";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./index.css";
@@ -108,9 +107,7 @@ const Header = () => {
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
-              >
-                {/*<AccountCircle />*/}
-              </IconButton>
+              ></IconButton>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}

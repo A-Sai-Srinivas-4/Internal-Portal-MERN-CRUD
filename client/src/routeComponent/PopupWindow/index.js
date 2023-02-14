@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteEmployeeCard } from "../../redux/dataSlice";
+
 import {
   Dialog,
   DialogTitle,
@@ -10,6 +11,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@material-ui/core";
+
 import { Button } from "@material-ui/core";
 import "./index.css";
 
@@ -17,13 +19,12 @@ const PopupWindow = (props) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const history = useHistory();
-  //console.log(props);
+
   const data = props.carddetails;
-  //console.log(data);
+
   const employeeId = data._id;
   const projectData = data.Details.Advance.Projects;
-  //console.log(projectData);
-  //console.log(data.Details.Advance.TechStack.value)
+
   const TechStackList = data.Details.Advance.TechStack.map((x) => x.value);
 
   const handleClickOpen = () => {
@@ -47,7 +48,6 @@ const PopupWindow = (props) => {
     }
   };
 
-  //console.log(TechStackList);
   return (
     <Modal
       {...props}
@@ -162,8 +162,3 @@ const PopupWindow = (props) => {
 };
 
 export default PopupWindow;
-
-// <h1 className="pop-heading">
-// Allocation :
-// <span className="pop-span">{`${eachItems.Allocation}`}</span>
-// </h1>

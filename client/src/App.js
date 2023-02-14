@@ -8,6 +8,7 @@ import AddProjectForm from "./routeComponent/AddForm/AddProjectForm";
 import AddEmployeeForm from "./routeComponent/AddForm/AddEmployeeForm";
 import UpdateProjectForm from "./routeComponent/UpdateForm/UpdateProjectForm"
 import UpdateEmployeeForm from "./routeComponent/UpdateForm/UpdateEmployeeForm";
+
 import "./App.css";
 
 const App = () => {
@@ -34,7 +35,6 @@ const App = () => {
             </Switch>
           </div>
         </div>
-        {/* <Footer />*/}
       </div>
     </>
   );

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 //import { getCards } from "../../redux/dataSlice";
 import { fetchData, addProjectCard } from "../../redux/dataSlice";
 import { AiOutlineClose } from "react-icons/ai";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { Button, Alert, CircularProgress } from "@mui/material";
-import axios from "axios";
 import "./index.css";
 
 const AddProjectForm = () => {
@@ -43,7 +40,7 @@ const AddProjectForm = () => {
 
   if (Data.Resources !== undefined) {
     data = Data.Resources.Employee_Details;
-    //console.log(data)
+    
   }
 
   var options = [];
@@ -79,8 +76,6 @@ const AddProjectForm = () => {
     return [...new Map(each.map((x) => [key(x), x])).values()];
   }
 
-
-
   const onclickClose = () => {
     history.goBack();
   };
@@ -89,9 +84,7 @@ const AddProjectForm = () => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
-      
     });
-    
   };
 
   const handleDetailsChange = (event) => {
@@ -104,7 +97,7 @@ const AddProjectForm = () => {
         },
       },
     });
-    //console.log(event.target.value)
+    
   };
 
   function handleSelectChange(selectedOption, selectedName) {
@@ -115,7 +108,6 @@ const AddProjectForm = () => {
         Advance: {
           ...formData.Details.Advance,
           [selectedName]: selectedOption,
-         
         },
       },
     });
@@ -148,12 +140,11 @@ const AddProjectForm = () => {
     });
 
     history.goBack();
-  
   };
 
   function MultiSelectDropdown(data, team) {
     console.log(data);
-    //console.log(team)
+    
     if (data !== undefined) {
       options = [];
       data.forEach((each) => {
@@ -338,9 +329,7 @@ const AddProjectForm = () => {
             <button className="submit-btn" type="submit">
               Submit
             </button>
-         
           </div>
-          
         </form>
       </div>
     </>
@@ -349,24 +338,4 @@ const AddProjectForm = () => {
 
 export default AddProjectForm;
 
-// {
-//   ID: "",
-//   Name: "",
-//   Scrum_Master: "",
-//   Current_Sprint: "",
-//   Details: {
-//     Advance: {
-//       Start_Date: "",
-//       "Date Of Join": "",
-//       End_Date: "",
-//       "Sprint_Start Date": "",
-//       "Sprint_Release Date": "",
-//       Client: "",
-//       Product_Owner: "",
-//       QA_Team: [],
-//       Development_Team: [],
-//       Technology: [],
-//     },
-//   },
-// }
 

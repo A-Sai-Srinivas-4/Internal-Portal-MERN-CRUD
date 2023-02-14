@@ -6,20 +6,17 @@ import { fetchData, updateEmployeeCard } from "../../redux/dataSlice";
 import { AiOutlineClose } from "react-icons/ai";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-//import { Button, Alert, CircularProgress } from "@mui/material";
 import axios from "axios";
 
 
 const UpdateEmployeeForm = () => {
   const Data = useSelector((state) => state.Data);
   const dispatch = useDispatch();
-  const [selectedOption, setSelectedOption] = useState("");
   const [formData, setFormData] = useState({});
   const {employeeId} = useParams();
   const history = useHistory();
 
-  //console.log(Data)
-
+  
   useEffect(() => {
     dispatch(fetchData());
     axios
@@ -32,16 +29,15 @@ const UpdateEmployeeForm = () => {
       });
   }, [employeeId,dispatch]);
 
+
   var data;
   var project_data;
 
   if (Data.Resources !== undefined) {
     data = Data.Resources.Employee_Details;
     project_data = Data.Resources.Project_Details;
-
-    //console.log(data)
   }
-  //console.log(project_data)
+  
 
   var options = {
     Gender: [
@@ -49,22 +45,26 @@ const UpdateEmployeeForm = () => {
       { name: "Female", value: "Female" },
       { name: "Others", value: "Others" },
     ],
+
     Role: [
       { name: "Testing", value: "Testing" },
       { name: "Jr Developer", value: "Jr Developer" },
       { name: "Sr Developer", value: "Sr Developer" },
     ],
+
     Team: [
       { name: "QA_Team", value: "QA_Team" },
       { name: "Development_Team", value: "Development_Team" },
       { name: "AWS_Team", value: "AWS_Team" },
     ],
+
     Experience: [
       { name: "Fresher", value: "Fresher" },
       { name: "<1 Year", value: "<1 Year" },
       { name: "1-3 Years", value: "1-3 Years" },
       { name: ">5 Years", value: ">5 Years" },
     ],
+
     TechStack: [
       { name: "React-JS", value: "React-JS" },
       { name: "Node-Js", value: "Node-Js" },
@@ -80,21 +80,23 @@ const UpdateEmployeeForm = () => {
       { name: "Power BI", value: "Power BI" },
       { name: "SQL", value: "SQL" },
     ],
+
     Employment: [
       { name: "Full-Time", value: "Full-Time" },
       { name: "Part-Time", value: "Part-Time" },
       { name: "Internship", value: "Internship" },
       { name: "Temporary", value: "Temporary" },
     ],
+
     Projects: [],
   };
+
+
 
   if (project_data !== undefined) {
     const projectName = project_data.map((x) => x.Name);
     projectName.forEach((x) => options.Projects.push({ name: x, value: x }));
   }
-  //console.log(options);
-
   function customTheme(theme) {
     return {
       ...theme,
@@ -121,31 +123,7 @@ const UpdateEmployeeForm = () => {
     });
   };
 
-  // const handleDetailsChange = (event) => {
-  //   setFormData({
-  //     ...formData,
-  //     Details: {
-  //       Advance: {
-  //         ...formData.Details.Advance,
-  //         [event.target.name]: event.target.value,
-  //       },
-  //     },
-  //   });
-  // };
 
-  // function handleSelectChange(selectedOption, selectedName) {
-  //   setFormData({
-  //     ...formData,
-  //     [selectedName]: selectedOption,
-  //     Details: {
-  //       ...formData.Details,
-  //       Advance: {
-  //         ...formData.Details.Advance,
-  //         [selectedName]: selectedOption,
-  //       },
-  //     },
-  //   });
-  // }
 
   function handleSelectChange(selectedOption, selectedName) {
     setFormData((prevFormData) => {
@@ -189,7 +167,6 @@ const UpdateEmployeeForm = () => {
   }
 
   const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
     setFormData({
       ...formData,
       Details: {
@@ -205,8 +182,7 @@ const UpdateEmployeeForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //console.log(formData);
-
+  
     dispatch(updateEmployeeCard(formData));
 
     setFormData({
@@ -238,9 +214,9 @@ const UpdateEmployeeForm = () => {
         optionList.push({ value: each.name, label: each.name });
       });
     }
-    // console.log(optionList)
+    
     const uniq_options = uniqByKeepLast(optionList, (o) => o.value);
-    //console.log(uniq_options);
+    
     return key === "TechStack" || key === "Projects" ? (
       <Select
         components={makeAnimated()}
@@ -371,63 +347,3 @@ const UpdateEmployeeForm = () => {
 };
 
 export default UpdateEmployeeForm;
-
-// <Button
-//             type="submit"
-//             variant="contained"
-//             size="small"
-//             sx={{
-//               margin: "0.9rem 0rem",
-//               fontFamily: "'Abel', 'sansSerif'",
-//             }}
-//           >
-//             {Data.addEmployeeCardStatus === "pending" ||
-//             Data.updateTodoStatus === "pending" ? (
-//               <CircularProgress size={24} color="secondary" />
-//             ) : formData._id ? (
-//               "Update Task"
-//             ) : (
-//               "Add Task"
-//             )}
-//           </Button>
-
-//           {Data.addTodoStatus === "rejected" ? (
-//             <Alert severity="error">{Data.addTodoError}</Alert>
-//           ) : null}
-//           {Data.addTodoStatus === "success" ? (
-//             <Alert severity="success">Task Added...</Alert>
-//           ) : null}
-//           {Data.updateTodoStatus === "rejected" ? (
-//             <Alert severity="error">{Data.updateTodoError}</Alert>
-//           ) : null}
-//           {Data.updateTodoStatus === "success" ? (
-//             <Alert severity="success">Task Updated...</Alert>
-//           ) : null}
-//           {Data.deleteTodoStatus === "rejected" ? (
-//             <Alert severity="error">{Data.deleteTodoError}</Alert>
-//           ) : null}
-//           {Data.deleteTodoStatus === "success" ? (
-//             <Alert severity="warning">A todo was deleted...</Alert>
-//           ) : null}
-
-// ID: "",
-// Name: "",
-// Role: "",
-// Image_url: "",
-// Team: "",
-// Details: {
-//   Advance: {
-//     Experience: "",
-//     TechStack: "",
-//     Employment: "",
-//     Offshore: "",
-//     Projects: [
-//       { Project_id: "", Project: "" },
-//       { Project_id: "", Project: "" },
-//     ],
-//   },
-
-// <div className="label-card">
-//   <label htmlFor="Gender">Gender : </label>
-//   {MultiSelectDropdown(data, options.Gender)}
-// </div>
